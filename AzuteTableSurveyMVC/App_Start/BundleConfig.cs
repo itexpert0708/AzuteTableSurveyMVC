@@ -26,6 +26,16 @@ namespace AzuteTableSurveyMVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new ScriptBundle("~/Content/labelauty").Include(
+                        "~/Content/labelauty/jquery-labelauty.css",
+                        "~/Content/labelauty/jquery-labelauty.js"));
+
+            bundles.Add(new ScriptBundle("~/Content/testfield").Include(
+                        "~/Content/testfield/css/jquery.material.form.css",
+                        "~/Content/testfield/css/style.css",
+                        "~/Content/testfield/js/jquery.material.form.js"
+                        ));
         }
     }
 }

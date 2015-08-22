@@ -4,6 +4,9 @@
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
 
+<script src="~/Scripts/jquery-2.0.3.js"></script>
+<script src="~/Scripts/jquery-2.0.3.min.js"></script>
+
 <address>
     One Microsoft Way<br />
     Redmond, WA 98052-6399<br />
@@ -12,6 +15,70 @@
 </address>
 
 <address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
+    <strong>Support:</strong> <a href="mailto:Support@example.com">Support@example.com</a><br/>
     <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
 </address>
+
+
+<input id="sendAnswers" class="btn btn-block btn-default btn-lg" type="submit" value="결과전송" style="display: block;" onclick="button1_click()"/>
+<Script>
+    function button1_click() {
+        //$('#sendAnswers').submit();
+
+        //$.get("/Home/SurveyQuetions");
+        //var url = "http://stackoverflow.com";
+        //$(location).attr('href', url);
+
+        //$.post("/Home/SurveyQuetions", 
+        //    {
+        //        'test1': 'data1',
+        //        'test2': 'data2'
+        //    });
+
+        //$.ajax({
+        //    type: 'POST',
+        //    url: '/Home/SurveyQuetions',
+        //    data: {
+        //        'test1': 'data1',
+        //        'test2': 'data2'
+        //    },
+        //    headers: {
+        //        Accept: "text/html, application/xhtml+xml, image/jxr, */*"
+        //    },
+        //    success: function () {
+
+        //    },
+        //    complete: function () {
+        //        //A function to be called when the request finishes (after success and error callbacks are executed) - from jquery docs
+        //        //do smth if you need
+        //        //document.location.reload();
+        //    }
+        //});
+
+        var form = document.createElement("form");
+        form.setAttribute("method", "POST");
+        form.setAttribute("action", "/Home/SurveyQuetions");
+        
+        var hiddenField = document.createElement("input");
+        //hiddenField.setAttribute("test1", "data1");
+        hiddenField.value = "data1";
+        hiddenField.name = "test1";
+
+        form.appendChild(hiddenField);
+
+        
+        //for (var key in params) {
+        //    var hiddenField = document.createElement("input");
+        //    hiddenField.setAttribute("type", "hidden");
+        //    hiddenField.setAttribute("name", key);
+        //    hiddenField.setAttribute("value", params[key]);
+
+        //    
+        //}
+
+        //히든으로 값을 주입시킨다.
+        $(form).hide();
+        document.body.appendChild(form);
+        form.submit();
+    }
+</Script>

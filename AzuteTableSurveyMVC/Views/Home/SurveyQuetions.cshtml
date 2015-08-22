@@ -1,0 +1,80 @@
+﻿@using RadioDb.Models
+@model System.Collections.Generic.IEnumerable<RadioDb.Models.SurveyQuestion>
+
+@Styles.Render("~/Content/labelauty")
+@Styles.Render("~/Content/testfield")
+
+
+@{
+    int idx = 0;
+    int identifyNumber = 1;
+    foreach (var question in Model)
+    {
+        idx++;
+        if (question.QuestionType == SurveyQuestion.QuestionTypes.Main)
+        {
+            <h2>@question.Header</h2>
+            <h3>@question.Description</h3>
+            continue;
+        }
+
+        // http://www.jqueryscript.net/form/jQuery-Plugin-For-Labeled-Checkbox-Radio-Button-Labelauty.html
+
+        // http://www.jqueryscript.net/form/Material-Design-Styled-Text-Fields-with-jQuery-CSS3.html
+        if (@question.QuestionType == SurveyQuestion.QuestionTypes.Object)
+        {
+            <div>
+                <h2>@question.Header</h2>
+                <h3>@question.Description</h3>
+                @foreach (var objectAnswers in @question.ObjectAnswers())
+                {
+                    <input class="to-labelauty synch-icon labelauty" type="radio" name="object-@idx" checked="" id="object-@identifyNumber" style="display: none;"/>
+                    <label for="object-@identifyNumber" style="min-width: 155px;">
+                        <span class="labelauty-unchecked-image"></span>
+                        <span class="labelauty-unchecked">@objectAnswers</span>
+                        <span class="labelauty-checked-image"></span>
+                        <span class="labelauty-checked" style="width: 123px;">@objectAnswers</span>
+                    </label>
+                    identifyNumber++;
+                }
+            </div>
+            continue;
+        }
+
+        if (@question.QuestionType == SurveyQuestion.QuestionTypes.Subject)
+        {
+            <div>
+                <h2>@question.Header</h2>
+                <h3>@question.Description</h3>
+                // 텍스트 입력이 필요하다.
+                <div class="material-input textarea">
+                    <textarea name="message" id="message"></textarea>
+                    <span class="material-bar"></span>
+                    <label for="message">Message</label>
+                </div>
+            </div>
+            continue;
+        }
+
+        if (@question.QuestionType == SurveyQuestion.QuestionTypes.CheckBox)
+        {
+            <div>
+                <h2>@question.Header</h2>
+                <h3>@question.Description</h3>
+                @foreach (var chkDescription in @question.CheckBoxAnswers())
+                {
+                    <input class="to-labelauty terms-icon labelauty" type="checkbox" id="chkbx-@identifyNumber" style="display: none;"/>
+                    <label for="chkbx-@identifyNumber" style="min-width: 155px;">
+                        <span class="labelauty-unchecked-image"></span>
+                        <span class="labelauty-unchecked" style="width: 116px;">">@chkDescription</span>
+                        <span class="labelauty-checked-image"></span>
+                        <span class="labelauty-checked">">@chkDescription</span>
+                    </label>
+                    identifyNumber++;
+                }
+            </div>
+            continue;
+        }
+    }
+}
+
