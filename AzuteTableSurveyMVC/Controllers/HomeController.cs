@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using RadioDb.Repository;
 
 namespace AzuteTableSurveyMVC.Controllers
 {
@@ -16,7 +18,7 @@ namespace AzuteTableSurveyMVC.Controllers
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
-
+            
             return View();
         }
 
@@ -25,6 +27,25 @@ namespace AzuteTableSurveyMVC.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public async Task<ActionResult> SurveyQuetions()
+        {
+            var data = await SurveyQuetionRepository.Instance.Read(1);
+            return View(data);
+        }
+
+        public class Test
+        {
+            public string test1 { get; set; }
+            public string test2 { get; set; } 
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> SurveyQuetions(Test test)
+        {
+            var data = await SurveyQuetionRepository.Instance.Read(1);
+            return View(data);
         }
     }
 }

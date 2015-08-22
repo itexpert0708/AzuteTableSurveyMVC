@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzuteTableSurveyMVC", "AzuteTableSurveyMVC\AzuteTableSurveyMVC.csproj", "{058850A5-0A1B-4A55-9A27-54F7B04B2FD1}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RadioDb", "RadioDb\RadioDb.csproj", "{AC06792C-E6B4-494B-ABB9-F2AAC279497C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{058850A5-0A1B-4A55-9A27-54F7B04B2FD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{058850A5-0A1B-4A55-9A27-54F7B04B2FD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{058850A5-0A1B-4A55-9A27-54F7B04B2FD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC06792C-E6B4-494B-ABB9-F2AAC279497C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC06792C-E6B4-494B-ABB9-F2AAC279497C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC06792C-E6B4-494B-ABB9-F2AAC279497C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC06792C-E6B4-494B-ABB9-F2AAC279497C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
