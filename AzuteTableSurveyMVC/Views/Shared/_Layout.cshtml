@@ -6,9 +6,20 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    <link href="~/Content/slidecss/demo.css" rel="stylesheet" />
+    <link href="~/Content/slidecss/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/slidecss/normalize.css" rel="stylesheet" />
+    <link href="~/Content/slidecss/menu_sideslide.css" rel="stylesheet"/>
+    <link href="~/Content/index.css" rel="stylesheet" />
+    <link href="~/Content/droplist/vallenato.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+@*<div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -34,10 +45,28 @@
         <footer>
             <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
+    </div>*@
+    <div class="container">
+        <div class="menu-wrap">
+            <nav class="menu">
+                <div class="icon-list">
+                    <a href="#"><span>TEST1</span></a>
+                    <a href="#"><span>TEST2</span></a>
+                    <a href="#"><span>TEST3</span></a>
+                    <a href="#"><span>TEST4</span></a>
+                    <a href="#"><span>TEST5</span></a>
+                    <a href="#"><span>TEST6</span></a>
+                </div>
+            </nav>
+            <button class="close-button" id="close-button">Close Menu</button>
+        </div>
+        <button class="menu-button" id="open-button">Open Menu</button>
+        <div class="content-wrap">
+            @RenderBody()
+        </div>
     </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/Slide/main.js"></script>
+    <script src="~/Scripts/Slide/classie.js"></script>
 </body>
 </html>
