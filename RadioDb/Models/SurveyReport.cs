@@ -7,6 +7,9 @@ using Microsoft.WindowsAzure.Storage.Table;
 
 namespace RadioDb.Models
 {
+    /// <summary>
+    /// 사용자가 입력한 설문 결과를 저장하는 클래스입니다.
+    /// </summary>
     public class SurveyReport : TableEntity
     {
         public string Report1 { get; set; }
