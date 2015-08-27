@@ -22,15 +22,17 @@ namespace RadioDb.Models
             CheckBox,
         }
 
+        public int Index { get; set; }
+
         public string Header { get; set; }
         public string Description { get; set; }
 
-        public string QuestionTypeStr { get; set; } 
+        public string QuestionTypeStr { get; set; }
         public QuestionTypes QuestionType
         {
             get
             {
-                var typeData = (QuestionTypes)Enum.Parse(typeof (QuestionTypes), QuestionTypeStr);
+                var typeData = (QuestionTypes)Enum.Parse(typeof(QuestionTypes), QuestionTypeStr);
                 return typeData;
             }
             set { QuestionTypeStr = value.ToString(); }
@@ -38,36 +40,26 @@ namespace RadioDb.Models
 
         public IEnumerable<string> ObjectAnswers()
         {
-            if (ObjectAnswer1 == null)
-                yield break;
-            yield return ObjectAnswer1;
-            if (ObjectAnswer2 == null)
-                yield break;
-            yield return ObjectAnswer2;
-            if (ObjectAnswer3 == null)
-                yield break;
-            yield return ObjectAnswer3;
-            if (ObjectAnswer4 == null)
-                yield break;
-            yield return ObjectAnswer4;
-            if (ObjectAnswer5 == null)
-                yield break;
-            yield return ObjectAnswer5;
-            if (ObjectAnswer6 == null)
-                yield break;
-            yield return ObjectAnswer6;
-            if (ObjectAnswer7 == null)
-                yield break;
-            yield return ObjectAnswer7;
-            if (ObjectAnswer8 == null)
-                yield break;
-            yield return ObjectAnswer8;
-            if (ObjectAnswer9 == null)
-                yield break;
-            yield return ObjectAnswer9;
-            if (ObjectAnswer10 == null)
-                yield break;
-            yield return ObjectAnswer10;
+            if (ObjectAnswer1 == null) yield break; yield return ObjectAnswer1;
+            if (ObjectAnswer2 == null) yield break; yield return ObjectAnswer2;
+            if (ObjectAnswer3 == null) yield break; yield return ObjectAnswer3;
+            if (ObjectAnswer4 == null) yield break; yield return ObjectAnswer4;
+            if (ObjectAnswer5 == null) yield break; yield return ObjectAnswer5;
+            if (ObjectAnswer6 == null) yield break; yield return ObjectAnswer6;
+            if (ObjectAnswer7 == null) yield break; yield return ObjectAnswer7;
+            if (ObjectAnswer8 == null) yield break; yield return ObjectAnswer8;
+            if (ObjectAnswer9 == null) yield break; yield return ObjectAnswer9;
+            if (ObjectAnswer10 == null) yield break; yield return ObjectAnswer10;
+            if (ObjectAnswer11 == null) yield break; yield return ObjectAnswer11;
+            if (ObjectAnswer12 == null) yield break; yield return ObjectAnswer12;
+            if (ObjectAnswer13 == null) yield break; yield return ObjectAnswer13;
+            if (ObjectAnswer14 == null) yield break; yield return ObjectAnswer14;
+            if (ObjectAnswer15 == null) yield break; yield return ObjectAnswer15;
+            if (ObjectAnswer16 == null) yield break; yield return ObjectAnswer16;
+            if (ObjectAnswer17 == null) yield break; yield return ObjectAnswer17;
+            if (ObjectAnswer18 == null) yield break; yield return ObjectAnswer18;
+            if (ObjectAnswer19 == null) yield break; yield return ObjectAnswer19;
+            if (ObjectAnswer20 == null) yield break; yield return ObjectAnswer20;
         }
 
         public string ObjectAnswer1 { get; set; }
@@ -80,6 +72,16 @@ namespace RadioDb.Models
         public string ObjectAnswer8 { get; set; }
         public string ObjectAnswer9 { get; set; }
         public string ObjectAnswer10 { get; set; }
+        public string ObjectAnswer11 { get; set; }
+        public string ObjectAnswer12 { get; set; }
+        public string ObjectAnswer13 { get; set; }
+        public string ObjectAnswer14 { get; set; }
+        public string ObjectAnswer15 { get; set; }
+        public string ObjectAnswer16 { get; set; }
+        public string ObjectAnswer17 { get; set; }
+        public string ObjectAnswer18 { get; set; }
+        public string ObjectAnswer19 { get; set; }
+        public string ObjectAnswer20 { get; set; }
 
         public IEnumerable<string> CheckBoxAnswers()
         {
@@ -168,7 +170,7 @@ namespace RadioDb.Models
 
         public SurveyQuestion()
         {
-            
+
         }
 
 

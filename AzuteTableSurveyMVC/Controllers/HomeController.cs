@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using AzuteTableSurveyMVC.Models;
 using RadioDb.Repository;
 
 namespace AzuteTableSurveyMVC.Controllers
@@ -35,14 +36,8 @@ namespace AzuteTableSurveyMVC.Controllers
             return View(data);
         }
 
-        public class Test
-        {
-            public string test1 { get; set; }
-            public string test2 { get; set; } 
-        }
-
         [HttpPost]
-        public async Task<ActionResult> SurveyQuetions(Test test)
+        public async Task<ActionResult> SurveyQuetions(QuestionResponse test)
         {
             var data = await SurveyQuetionRepository.Instance.Read(1);
             return View(data);

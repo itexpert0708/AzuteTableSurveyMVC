@@ -4,77 +4,216 @@
 @Styles.Render("~/Content/labelauty")
 @Styles.Render("~/Content/testfield")
 
-
-@{
-    int idx = 0;
-    int identifyNumber = 1;
-    foreach (var question in Model)
-    {
-        idx++;
-        if (question.QuestionType == SurveyQuestion.QuestionTypes.Main)
-        {
-            <h2>@question.Header</h2>
-            <h3>@question.Description</h3>
-            continue;
+<div style="background-color: #252525">
+    <style type="text/css">
+        h1, h2, h3 {
+            color: whitesmoke;
         }
+    </style>
 
-        // http://www.jqueryscript.net/form/jQuery-Plugin-For-Labeled-Checkbox-Radio-Button-Labelauty.html
 
-        // http://www.jqueryscript.net/form/Material-Design-Styled-Text-Fields-with-jQuery-CSS3.html
-        if (@question.QuestionType == SurveyQuestion.QuestionTypes.Object)
+    @{
+        int idx = 0;
+        int identifyNumber = 1;
+        foreach (var question in Model)
         {
-            <div>
+            idx++;
+            if (question.QuestionType == SurveyQuestion.QuestionTypes.Main)
+            {
                 <h2>@question.Header</h2>
                 <h3>@question.Description</h3>
-                @foreach (var objectAnswers in @question.ObjectAnswers())
-                {
-                    <input class="to-labelauty synch-icon labelauty" type="radio" name="object-@idx" checked="" id="object-@identifyNumber" style="display: none;"/>
-                    <label for="object-@identifyNumber" style="min-width: 155px;">
-                        <span class="labelauty-unchecked-image"></span>
-                        <span class="labelauty-unchecked">@objectAnswers</span>
-                        <span class="labelauty-checked-image"></span>
-                        <span class="labelauty-checked" style="width: 123px;">@objectAnswers</span>
-                    </label>
-                    identifyNumber++;
-                }
-            </div>
-            continue;
-        }
+                continue;
+            }
 
-        if (@question.QuestionType == SurveyQuestion.QuestionTypes.Subject)
-        {
-            <div>
-                <h2>@question.Header</h2>
-                <h3>@question.Description</h3>
-                // 텍스트 입력이 필요하다.
-                <div class="material-input textarea">
-                    <textarea name="message" id="message"></textarea>
-                    <span class="material-bar"></span>
-                    <label for="message">Message</label>
+            // http://www.jqueryscript.net/form/jQuery-Plugin-For-Labeled-Checkbox-Radio-Button-Labelauty.html
+
+            // http://www.jqueryscript.net/form/Material-Design-Styled-Text-Fields-with-jQuery-CSS3.html
+            if (@question.QuestionType == SurveyQuestion.QuestionTypes.Object)
+            {
+                <div>
+                    <h2>@question.Header</h2>
+                    <h3>@question.Description</h3>
+                    @{
+                        idx = question.Index;
+                        identifyNumber = 1;
+                    }
+                    <input id="type.q.@idx" style="display: none" value="@question.QuestionTypeStr" />
+                    @foreach (var objectAnswers in @question.ObjectAnswers())
+                    {
+                        <input class="to-labelauty synch-icon labelauty" type="radio" name="q.@idx" checked="" id="q.@idx.@identifyNumber" style="display: none;" />
+                        <label for="q.@idx.@identifyNumber" style="min-width: 155px;">
+                            <span class="labelauty-unchecked-image"></span>
+                            <span class="labelauty-unchecked">@objectAnswers</span>
+                            <span class="labelauty-checked-image"></span>
+                            <span class="labelauty-checked" style="width: 123px;">@objectAnswers</span>
+                        </label>
+                        identifyNumber++;
+                    }
+                    <input id="count.q.@idx" style="display: none" value="@identifyNumber" />
                 </div>
-            </div>
-            continue;
-        }
+                            continue;
+                        }
 
-        if (@question.QuestionType == SurveyQuestion.QuestionTypes.CheckBox)
-        {
-            <div>
-                <h2>@question.Header</h2>
-                <h3>@question.Description</h3>
-                @foreach (var chkDescription in @question.CheckBoxAnswers())
-                {
-                    <input class="to-labelauty terms-icon labelauty" type="checkbox" id="chkbx-@identifyNumber" style="display: none;"/>
-                    <label for="chkbx-@identifyNumber" style="min-width: 155px;">
-                        <span class="labelauty-unchecked-image"></span>
-                        <span class="labelauty-unchecked" style="width: 116px;">">@chkDescription</span>
-                        <span class="labelauty-checked-image"></span>
-                        <span class="labelauty-checked">">@chkDescription</span>
-                    </label>
-                    identifyNumber++;
-                }
-            </div>
-            continue;
-        }
+                        if (@question.QuestionType == SurveyQuestion.QuestionTypes.Subject)
+                        {
+                            idx = question.Index;
+                            identifyNumber = 1;
+
+                            <div>
+                                <h2>@question.Header</h2>
+                                <h3>@question.Description</h3>
+                                <input id="type.q.@idx" style="display: none" value="@question.QuestionTypeStr" />
+                                // 텍스트 입력이 필요하다.
+                                <div class="material-input textarea">
+                                    <textarea name="message" id="q.@idx"></textarea>
+                                    <span class="material-bar"></span>
+                                    <label for="q.@idx">Message</label>
+                                </div>
+                            </div>
+                            continue;
+                        }
+
+                        if (@question.QuestionType == SurveyQuestion.QuestionTypes.CheckBox)
+                        {
+                            idx = question.Index;
+                            identifyNumber = 1;
+                            <div>
+                                <h2>@question.Header</h2>
+                                <h3>@question.Description</h3>
+                                <input id="type.q.@idx" style="display: none" value="@question.QuestionTypeStr" />
+                                @foreach (var chkDescription in @question.CheckBoxAnswers())
+                                {
+                                    <input class="to-labelauty terms-icon labelauty" type="checkbox" id="q.@idx.@identifyNumber" style="display: none;" />
+                                    <label for="q.@idx.@identifyNumber" style="min-width: 155px;">
+                                        <span class="labelauty-unchecked-image"></span>
+                                        <span class="labelauty-unchecked" style="width: 116px;">">@chkDescription</span>
+                                        <span class="labelauty-checked-image"></span>
+                                        <span class="labelauty-checked">">@chkDescription</span>
+                                    </label>
+                                    identifyNumber++;
+                                }
+                                <input id="count.q.@idx" style="display: none" value="@identifyNumber" />
+                            </div>
+                                continue;
+                            }
+                        }
     }
-}
 
+
+    <input id="sendAnswers" class="btn btn-block btn-default btn-lg" type="submit" value="결과전송" style="display: block;" onclick="button1_click()" />
+
+    <script>
+        function button1_click() {
+            // document.getElementById('object-5').checked
+            // document.getElementById('message').value
+
+            // 양식 체크\
+            //var idxTest = 1;
+            //var questionType = document.getElementById('type.q.' + idxTest).value;
+            //alert(questionType);
+            //idxTest++;
+            //questionType = document.getElementById('type.q.' + idxTest).value;
+            //alert(questionType);
+            //idxTest++;
+            //questionType = document.getElementById('type.q.' + idxTest).value;
+            //alert(questionType);
+            //idxTest++;
+            //questionType = document.getElementById('type.q.' + idxTest).value;
+            //alert(questionType);
+            //idxTest++;
+
+
+            var form = document.createElement("form");
+            form.setAttribute("method", "POST");
+            form.setAttribute("action", "/Home/SurveyQuetions");
+
+            // 테스트 값 입력하기
+            //var hiddenField = document.createElement("input");
+            //hiddenField.value = "data1";
+            //hiddenField.name = "test1";
+            //form.appendChild(hiddenField);
+
+
+            var questionId = 1;
+
+            for (questionId = 1; questionId < 5; questionId++) {
+                var questionType = document.getElementById('type.q.' + questionId).value;
+                if (questionType === 'Object') {
+                    var count = document.getElementById('count.q.' + questionId).value;
+                    for (var idx = 1; idx < count; idx++) {
+                        var chk = document.getElementById('q.' + questionId + '.' + idx).checked;
+                        if (chk === true) {
+                            alert('q.' + questionId + '.' + idx + ' : ' + chk);
+                            var hiddenField = document.createElement("input");
+                            hiddenField.name = 'q_' + questionId;
+                            hiddenField.value = idx;
+                            form.appendChild(hiddenField);
+                            break;
+                        }
+                    }
+                } else if (questionType === 'Subject') {
+                    var msg = document.getElementById('q.' + questionId).value;
+                    alert('q.' + questionId + ' : ' + msg);
+                    var hiddenField = document.createElement("input");
+                    hiddenField.name = 'q_' + questionId;
+                    hiddenField.value = msg;
+                    form.appendChild(hiddenField);
+                } else if (questionType === 'CheckBox') {
+                    var chk = '';
+                    var count = document.getElementById('count.q.' + questionId).value;
+                    for (var idx = 1; idx < count; idx++) {
+                        var data = document.getElementById('q.' + questionId + '.' + idx).checked;
+                        if (data === true) {
+                            chk = chk + idx + ',';
+                        }
+                    }
+                    alert('q.4 : ' + chk);
+                    var hiddenField = document.createElement("input");
+                    hiddenField.name = 'q_' + questionId;
+                    hiddenField.value = chk;
+                    form.appendChild(hiddenField);
+                }
+            }
+
+
+
+
+            //questionType = document.getElementById('type.q.2').value;
+            //if (questionType === 'Object') {
+            //    var count = document.getElementById('count.q.2').value;
+            //    for (var idx = 1; idx < count; idx++) {
+            //        var chk = document.getElementById('q.2.' + idx).checked;
+            //        if (chk === true) {
+            //            alert('q.2.' + idx + ' : ' + chk);
+            //            break;
+            //        }
+            //    }
+            //}
+
+            //questionType = document.getElementById('type.q.3').value;
+            //if (questionType === 'Subject') {
+            //    var msg = document.getElementById('q.3').value;
+            //    alert('q.3' + ' : ' + msg);
+            //}
+
+            //questionType = document.getElementById('type.q.4').value;
+            //if (questionType === 'CheckBox') {
+            //    var chk = '';
+            //    var count = document.getElementById('count.q.4').value;
+            //    for (var idx = 1; idx < count; idx++) {
+            //        var data = document.getElementById('q.4.' + idx).checked;
+            //        if (data === true) {
+            //            chk = chk + idx + ',';
+            //        }
+            //    }
+            //    alert('q.4 : ' + chk);
+
+
+
+            //히든으로 값을 주입시킨다.
+            $(form).hide();
+            document.body.appendChild(form);
+            form.submit();
+        }
+    </script>
+</div>
