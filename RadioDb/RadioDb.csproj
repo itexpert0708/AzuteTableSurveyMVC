@@ -70,9 +70,9 @@
   <ItemGroup>
     <Compile Include="Helpers\LongHelper.cs" />
     <Compile Include="Helpers\StringHelper.cs" />
-    <Compile Include="Models\SurveyQuestion.cs" />
-    <Compile Include="Models\SurveyReport.cs" />
-    <Compile Include="Models\SurveyResult.cs" />
+    <Compile Include="Helpers\Models\SurveyQuestion.cs" />
+    <Compile Include="Helpers\Models\SurveyReport.cs" />
+    <Compile Include="Helpers\Models\SurveyResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
